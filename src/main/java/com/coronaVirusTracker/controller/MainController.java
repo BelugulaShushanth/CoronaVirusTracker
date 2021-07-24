@@ -21,7 +21,8 @@ public class MainController {
 	@GetMapping("*")
 	public String launchHomePage(Model model) throws JsonMappingException, JsonProcessingException {
 		DataBean dataBean = cds.fetchCoronaVirusData();
-		System.out.println(dataBean);
+		String arr[] = dataBean.getDate().split("t");
+		dataBean.setDate(arr[0]);
 		model.addAttribute("dataBean", dataBean);
 		return "HomePage";
 	}
